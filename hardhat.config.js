@@ -20,14 +20,14 @@ module.exports = {
     celoMainnet: {
       url: `https://forno.celo.org`,
       accounts: {
-        mnemonic: [`${CELO_MAINNET_MNEMONIC}`],
+        mnemonic: `${CELO_MAINNET_MNEMONIC}`,
       },
       chainId: 44787,
     },
     celoAlfajores: {
       url: `https://alfajores-forno.celo-testnet.org`,
       accounts: {
-        mnemonic: [`${CELO_TESTNET_MNEMONIC}`],
+        mnemonic: `${CELO_TESTNET_MNEMONIC}`,
       },
       chainId: 44787,
     },
