@@ -1,18 +1,20 @@
 {
   "name": "celo-multi-signatures-hardhat",
   "version": "1.0.0",
-  "description": "",
+  "description": "Repo use for Celo tutorials on How to write a multi-signatures contract on Celo using Hardhat",
   "main": "index.js",
+  "license": "MIT",
+  "keywords": ["celo", "solidity", "smartcontract", "hardhat", "advanced"],
+  "author": "Marc-Aurele Besner <82244926+marc-aurele-besner@users.noreply.github.com>",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "hardhat test",
+    "compile": "hardhat compile",
+    "coverage": "hardhat coverage"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/marc-aurele-besner/celo-multi-signatures-hardhat.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/marc-aurele-besner/celo-multi-signatures-hardhat/issues"
   },
@@ -24,7 +26,6 @@
     "hardhat-awesome-cli": "^0.1.2"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^4.8.2",
-    "npm": "^9.6.0"
+    "@openzeppelin/contracts": "^4.8.2"
   }
 }
