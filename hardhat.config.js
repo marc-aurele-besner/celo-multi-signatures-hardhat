@@ -1,4 +1,6 @@
 require("@nomicfoundation/hardhat-toolbox");
+require("hardhat-awesome-cli");
+require("dotenv").config();
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
