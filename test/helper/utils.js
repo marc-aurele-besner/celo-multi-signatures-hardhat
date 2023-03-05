@@ -1,4 +1,4 @@
-import { ethers, network, addressBook } from 'hardhat'
+const { ethers, network, addressBook } = require('hardhat');
 
 module.export = {
     setupProviderAndWallets: async function () {
