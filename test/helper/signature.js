@@ -1,4 +1,4 @@
-const { network } = require('hardhat')
+const { network } = require('hardhat');
 
 module.export = {
   signTransaction: async function (
@@ -48,7 +48,7 @@ module.export = {
         gas,
         nonce,
       }
-    )
-    return signature
+    );
+    return signature;
   }
 }
