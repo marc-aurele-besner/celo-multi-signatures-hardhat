@@ -1,13 +1,23 @@
-# Sample Hardhat Project
+# Celo Multi-Signatures with Hardhat
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+[![license](https://img.shields.io/github/license/jamesisaac/react-native-background-task.svg)](https://opensource.org/licenses/MIT)
 
-Try running some of the following tasks:
+Building a multi-signatures contract on Celo blockchain using Hardhat, multi-signatures are one of the best way to keep your crypto assets or ownership of your contracts safe and remove a central point of failure.
+
+This repo is used for a Tutorial on How to write a multi-signatures contract on Celo using Hardhat | Part 1/2
+
+## 🔧 Install Dependencies
+
+To install all necessary dependencies, run the following command:
 
 ```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
+npm install
+```
+
+## 💻 Compile contract
+
+To compile the contract, run the following command:
+
+```shell
+npx hardhat compile
 ```
