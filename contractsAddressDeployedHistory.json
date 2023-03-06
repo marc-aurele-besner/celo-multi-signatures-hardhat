@@ -1,0 +1,21 @@
+[
+  {
+    "name": "CeloMultiSig",
+    "address": "0x10C3e6FbdFBb43459B13B6957f77097EE5aC7931",
+    "network": "celoAlfajores",
+    "deployer": "0x80937Baa2c51d4b906767700a0A47aff23e3cd35",
+    "deploymentDate": "Mon Mar 06 2023 01:24:03 GMT-0500 (Eastern Standard Time)",
+    "chainId": 44787,
+    "blockHash": "",
+    "blockNumber": 0,
+    "tag": "",
+    "extra": {
+      "owners": [
+        "0x80937Baa2c51d4b906767700a0A47aff23e3cd35",
+        "0x274a1EBC6156aAcD705dCb96510fD6Ef1721A686",
+        "0x080b27ac016138c190f9ACe57bF0d8b1736AFCb1"
+      ],
+      "threshold": 2
+    }
+  }
+]
