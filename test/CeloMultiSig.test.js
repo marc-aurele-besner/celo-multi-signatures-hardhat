@@ -101,4 +101,15 @@ describe('CeloMultiSig', function () {
     await Helper.test.execTransaction(contract, owner01, [owner01, owner02], contract.address, 0, data, Helper.DEFAULT_GAS, undefined, ['OwnerAdded'], signatures)
     await Helper.test.execTransaction(contract, owner01, [owner01, owner02], contract.address, 0, data, Helper.DEFAULT_GAS, Helper.errors.INVALID_OWNER, undefined, signatures)
   })
+
+  it('Execute transaction without data but 1 ETH in value', async function () {
+    await owner01.sendTransaction({ to: contract.address, value: ethers.utils.parseEther('1'), data: '', gasLimit: 30000 })
+    await Helper.test.execTransaction(contract, owner01, [owner01, owner02, owner03], owner01.address, ethers.utils.parseEther('1'), '0x', 30000)
+  })
+
+  it('Execute transaction without data but 2x 1 ETH in value', async function () {
+    await owner01.sendTransaction({ to: contract.address, value: ethers.utils.parseEther('2'), data: '', gasLimit: 30000 })
+    await Helper.test.execTransaction(contract, owner01, [owner01, owner02, owner03], owner01.address, ethers.utils.parseEther('1'), '0x', 30000)
+    await Helper.test.execTransaction(contract, owner02, [owner01, owner02, owner03], owner01.address, ethers.utils.parseEther('1'), '0x', 30000)
+  })
 })

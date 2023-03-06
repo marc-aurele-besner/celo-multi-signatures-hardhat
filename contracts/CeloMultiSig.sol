@@ -203,4 +203,7 @@ contract CeloMultiSig is ReentrancyGuard, EIP712 {
         _owners[oldOwner] = false;
         _owners[newOwner] = true;
     }
+    
+    /// @notice Receives Ether
+    receive() external payable {}
 }
