@@ -53,7 +53,7 @@ contract CeloMultiSig is ReentrancyGuard, EIP712 {
             }
         }
         _ownerCount = uint16(owners_.length);
-        changeThreshold(threshold_);
+        _changeThreshold(threshold_);
     }
 
     /// @notice Retrieves the contract name
@@ -179,10 +179,17 @@ contract CeloMultiSig is ReentrancyGuard, EIP712 {
     /// @notice Changes the threshold
     /// @param newThreshold The new threshold.
     /// @dev This function can only be called inside a multisig transaction.
-    function changeThreshold(uint16 newThreshold) public onlyThis {
+    function _changeThreshold(uint16 newThreshold) private {
         require(newThreshold > 0, 'CeloMultiSig: threshold must be greater than 0');
         require(newThreshold <= _ownerCount, 'CeloMultiSig: threshold must be less than or equal to owner count');
         _threshold = newThreshold;
+    }
+
+    /// @notice Changes the threshold
+    /// @param newThreshold The new threshold.
+    /// @dev This function can only be called inside a multisig transaction.
+    function changeThreshold(uint16 newThreshold) public onlyThis {
+        _changeThreshold(newThreshold);
     }
 
     /// @notice Replaces an owner with a new owner
