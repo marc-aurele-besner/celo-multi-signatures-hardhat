@@ -59,7 +59,7 @@ const prepareSignatures = async (contract, owners, to, value, data, gas = 30000)
     let signatures = '0x'
     for (var i = 0; i < owners.length; i++) {
         // For each owners, sign the transaction
-        const sig = await signature.signMultiSigTxn(contract.address, owners[i], to, value, data, gas, nonce)
+        const sig = await signature.signTransaction(contract.address, owners[i], to, value, data, gas, nonce)
         // Concatenate the signatures
         signatures += sig.substring(2)
     }
