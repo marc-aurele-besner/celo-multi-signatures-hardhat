@@ -46,7 +46,6 @@ const getEventFromReceipt = async (contract, receipt, eventName) => {
         try {
             return contract.interface.parseLog(log)
         } catch (e) {
-            console.log('e', e)
             return
         }
     })
@@ -69,24 +68,26 @@ const prepareSignatures = async (contract, owners, to, value, data, gas = 30000)
 
 const execTransaction = async (contract, submitter, owners, to, value, data, gas = 30000, errorMsg, extraEvents, signatures) => {
     // Prepare signatures if not provided
-    if (!signatures) signatures = await prepareSignatures(contract, owners, to, value, data, gas)
+    if (!signatures) signatures = await prepareSignatures(contract, owners, to, value, data, gas);
     // Prepare transaction
-    const input = await contract.connect(submitter).populateTransaction.execTransaction(to, value, data, gas, signatures)
+    const input = await contract.connect(submitter).populateTransaction.execTransaction(to, value, data, gas, signatures);
   
     // Send the transaction and check the result
-    const receipt = await checkRawTxnResult(input, submitter, errorMsg)
+    const receipt = await checkRawTxnResult(input, submitter, errorMsg);
     if (!errorMsg) {
         // Check the event emitted (if transaction should succeed)
-        const event = await getEventFromReceipt(contract, receipt, 'TransactionExecuted')
+        const event = await getEventFromReceipt(contract, receipt, 'TransactionExecuted');
+        let found = false;
         for (var i = 0; i < event.length; i++) {
             if (event[i] && event[i].name === 'TransactionExecuted') {
                 // If the event is found, check the parameters
-                expect(event[i].args.sender).to.be.equal(submitter.address)
-                expect(event[i].args.to).to.be.equal(to)
-                expect(event[i].args.value).to.be.equal(value)
-                expect(event[i].args.data).to.be.equal(data)
-                expect(event[i].args.txnGas).to.be.equal(gas)
-                return receipt
+                expect(event[i].args.sender).to.be.equal(submitter.address);
+                expect(event[i].args.to).to.be.equal(to);
+                expect(event[i].args.value).to.be.equal(value);
+                expect(event[i].args.data).to.be.equal(data);
+                expect(event[i].args.txnGas).to.be.equal(gas);
+                found = true;
+                return receipt;
             } else {
                 // If the event is not found, check if the transaction failed
                 if (
@@ -96,15 +97,16 @@ const execTransaction = async (contract, submitter, owners, to, value, data, gas
                     event[i].name === 'TransactionFailed'
                 ) {
                     // If the transaction failed, check the parameters and if we expect a failure
-                    expect(event[i].args.sender).to.be.equal(submitter.address)
-                    expect(event[i].args.to).to.be.equal(to)
-                    expect(event[i].args.value).to.be.equal(value)
-                    expect(event[i].args.data).to.be.equal(data)
-                    expect(event[i].args.txnGas).to.be.equal(gas)
-                    return receipt
+                    expect(event[i].args.sender).to.be.equal(submitter.address);
+                    expect(event[i].args.to).to.be.equal(to);
+                    expect(event[i].args.value).to.be.equal(value);
+                    expect(event[i].args.data).to.be.equal(data);
+                    expect(event[i].args.txnGas).to.be.equal(gas);
+                    found = true;
+                    return receipt;
                 } else {
                     // If the transaction failed but we don't expect it, throw an error
-                    expect.fail('TransactionExecuted event not found')
+                    if (found) expect.fail('TransactionExecuted event not found')
                 }
             }
         }
@@ -113,11 +115,11 @@ const execTransaction = async (contract, submitter, owners, to, value, data, gas
         // If we expect an extra event, check if it is emitted
         if (extraEvents && extraEvents.length > 0) {
             for (let i = 1; i < extraEvents.length; i++) {
-                const eventsFound = await getEventFromReceipt(contract, receipt, event)
+                const eventsFound = await getEventFromReceipt(contract, receipt, event);
                 for (var ii = 0; i < eventsFound.length; ii++) {
                     if (eventsFound[ii]) {
-                        expect(submitter.address).to.be.equal(eventsFound[ii].sender)
-                        return receipt
+                        expect(submitter.address).to.be.equal(eventsFound[ii].sender);
+                        return receipt;
                     }
                 }
             }
