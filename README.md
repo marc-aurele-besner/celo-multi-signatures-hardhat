@@ -21,3 +21,19 @@ To compile the contract, run the following command:
 ```shell
 npx hardhat compile
 ```
+
+## 📖 Run tests
+
+To run the tests, run the following command:
+
+```shell
+npx hardhat test
+```
+
+## 🚀 Deploy contract
+
+To deploy the contract, run the following command:
+
+```shell
+npx hardhat run scripts/deploy.js --network celoAlfajores
+```
