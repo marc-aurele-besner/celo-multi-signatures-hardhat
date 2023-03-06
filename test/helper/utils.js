@@ -1,6 +1,6 @@
 const { ethers, network, addressBook } = require('hardhat');
 
-module.export = {
+module.exports = {
     setupProviderAndWallets: async function () {
         const provider = ethers.provider;
         let owner01;
@@ -36,12 +36,12 @@ module.export = {
         // Retrieve the contract factory
         const CeloMultiSig = await ethers.getContractFactory('CeloMultiSig');
         // Deploy the contract with the specified parameters for the constructor
-        const contract = await CeloMultiSig.deploy(owners, threshold);
+        const contract = await CeloMultiSig.deploy(owners, threshold, { gasLimit: 10000000 });
         // Wait for the contract to be deployed
         await contract.deployed();
         // Save the contract address in the address book
         await addressBook.saveContract(
-            contractName,
+            'CeloMultiSig',
             contract.address,
             network.name,
             contract.deployTransaction.from,
@@ -50,8 +50,8 @@ module.export = {
             contract.deployTransaction.blockNumber,
             undefined,
             {
-              owners: ownersAddresses,
-              threshold,
+                owners,
+                threshold,
             }
           );
         // Return the contract

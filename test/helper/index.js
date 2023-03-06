@@ -1,9 +1,9 @@
 const errors = require('./errors');
 const test = require('./test');
-const signature = require('./signatures');
+const signature = require('./signature');
 const utils = require('./utils');
 
-module.export = {
+module.exports = {
     errors,
     test,
     signature,

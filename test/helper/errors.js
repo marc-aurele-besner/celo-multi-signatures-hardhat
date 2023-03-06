@@ -1,4 +1,4 @@
-module.export = {
+module.exports = {
     NOT_SELF: 'CeloMultiSig: only this contract can call this function',
     MAX_OWNERS_COUNT_EXCEEDED: 'CeloMultiSig: cannot add owner above 2^16 - 1',
     INVALID_SIGNATURE: 'CeloMultiSig: invalid signatures',

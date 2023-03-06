@@ -1,6 +1,6 @@
 const { network } = require('hardhat');
 
-module.export = {
+module.exports = {
   signTransaction: async function (
     contractAddress,
     wallet,

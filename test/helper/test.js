@@ -1,7 +1,7 @@
 const { ethers, network } = require('hardhat');
 const { expect } = require('chai');
 
-const signature = require('./signatures');
+const signature = require('./signature');
 
 const ZERO = ethers.BigNumber.from(0);
 
@@ -161,7 +161,7 @@ const replaceOwner = async (contract, submitter, owners, ownerToAdd, ownerToRemo
     }
 }
 
-module.export = {
+module.exports = {
     checkRawTxnResult,
     prepareSignatures,
     execTransaction,
