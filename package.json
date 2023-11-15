@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/marc-aurele-besner/celo-multi-signatures-hardhat#readme",
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
     "dotenv": "^16.0.3",
     "hardhat": "^2.13.0",
     "hardhat-awesome-cli": "^0.1.2"
